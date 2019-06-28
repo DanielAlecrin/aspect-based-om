@@ -1,0 +1,29 @@
+CREATE TABLE review (review_id VARCHAR(100), review_sentence VARCHAR(10000), PRIMARY KEY (review_id));
+
+CREATE TABLE sentences (review_id VARCHAR(100), sentence VARCHAR(10000), PRIMARY KEY (review_id));
+
+
+CREATE TABLE pos_tagged_sentences(review_id VARCHAR(100), pos_tagged_sentence VARCHAR(10000), PRIMARY KEY (review_id));
+
+
+CREATE TABLE nouns_list_per_sentence(review_id VARCHAR(100), nouns VARCHAR(10000), PRIMARY KEY (review_id)); 
+
+CREATE TABLE candidate_aspects(review_id VARCHAR(100), candidate_aspect VARCHAR(10000)); 
+
+
+CREATE TABLE frequent_itemsets(frequent_itemsets VARCHAR(10000));
+
+CREATE TABLE frequent_itemsets_k(frequent_itemsets_k VARCHAR(10000));
+
+CREATE TABLE candidate_aspects_final(aspect VARCHAR(10000));
+
+pruning
+CREATE TABLE pruning(candidate_features VARCHAR(10000));
+
+CREATE TABLE product_aspects(aspect VARCHAR(1000));
+
+CREATE TABLE sentiment_analysis(product_aspect VARCHAR(1000), pos_score INT, neg_score INT, neu_score INT, pos_sent_ids TEXT(10000), neg_sent_ids TEXT(10000), neu_sent_ids TEXT(10000));
+
+
+
+
