@@ -1,5 +1,5 @@
 import aspects_extraction,\
-    pos_tagging, aspect_pruning, asr_apriori, summary
+    pos_tagging, aspect_pruning, asr_apriori
 import pre_processing
 import pandas as pd
 import numpy as np
@@ -39,7 +39,7 @@ import time
 np.random.seed(500)
 
 def main():
-    with open('data/data_test.csv', 'r', encoding='utf8') as csvfile:
+    with open('data/data_train.csv', 'r', encoding='utf8') as csvfile:
         review_list_origin = pd.read_csv(csvfile)
     
     teste = review_list_origin.loc[review_list_origin['polarity'] == 1]

@@ -65,12 +65,7 @@ def main():
         else:
             feature_list_ids[feature_word]['Review_ID'].append(review_id)
 
-    #print('feature', feature_list_ids)
-    #for feature_key, feature_values in feature_list_ids.items():
-    #    print(feature_key)
-    #    print(len(feature_values['Review_ID']))
-
-    with open('data/data_test.csv', 'r', encoding='utf8') as csvfile:
+    with open('data/data_train.csv', 'r', encoding='utf8') as csvfile:
         review_list = pd.read_csv(csvfile)
     
     classifier = pickle.load(open('models/nb_classifier.sav', 'rb'))
@@ -89,8 +84,8 @@ def main():
 
     final_list = []
     for feature_key, feature_values in feature_list_ids.items():
-        print(feature_key)
-        print(len(feature_values['Review_ID']))
+        #print(feature_key)
+        #print(len(feature_values['Review_ID']))
         pos_value = 0
         neg_value = 0
         for review_id in feature_values['Review_ID']:
@@ -98,7 +93,7 @@ def main():
 
             if len(registry) > 0:
                 registry = registry.iloc[0]['polarity']
-                print(registry)
+                #print(registry)
                 if registry == 1:
                     pos_value = pos_value + 1
                 else:
@@ -112,13 +107,13 @@ def main():
     for aspect, pos_value, neg_value in final_list:
         total = pos_value + neg_value
 
-        if neg_value > 3:
-            pos_per.append((pos_value/total))
-            neg_per.append((neg_value/total))
-            index_names.append(aspect)
+        #if neg_value > 3:
+        pos_per.append((pos_value/total))
+        neg_per.append((neg_value/total))
+        index_names.append(aspect)
 
-        if len(index_names) == 10:
-            break
+        #if len(index_names) == 10:
+        #    break
 
     speed = [0.1, 17.5, 40, 48, 52, 69, 88]
     lifespan = [2, 8, 70, 1.5, 25, 12, 28]
@@ -127,7 +122,6 @@ def main():
                        'score negativo': neg_per 
                        }, index=index_names)
     ax = df.plot.barh(stacked=True)
-    #plt.title('Sumarização - Taxa de polaridade de cada aspecto com base nas opiniões de clientes')
     ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), shadow=True, ncol=2)
     plt.show()
 

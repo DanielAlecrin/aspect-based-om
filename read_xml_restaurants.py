@@ -1,8 +1,4 @@
-import xml.etree.ElementTree as et
-import json
-import re
 from bs4 import BeautifulSoup
-from xml.dom import minidom
 import pandas as pd
 
 def read_semeval2016_task5_subtask1(filepath):
@@ -29,19 +25,6 @@ def read_semeval2016_task5_subtask1(filepath):
 
                 opinion_tags = s_tag.find_all("Opinion")
                 for o_tag in opinion_tags:
-                    # category
-                    ''' try:
-                        opinion.category = o_tag["category"]
-                    except KeyError:
-                        opinion.category = None
-
-                    # entity + attribute
-                    if opinion.category and "#" in opinion.category:
-                        opinion.entity, opinion.attribute = opinion.category.split("#")
-                    else:
-                        opinion.entity = None
-                        opinion.attribute = None
-                    '''
                     # polarity
                     opinionPolarity = ''
                     try:
@@ -63,9 +46,6 @@ def read_semeval2016_task5_subtask1(filepath):
                         opinionTarget = o_tag["target"]
                         if opinionTarget == "NULL":
                             continue
-                        ''' else:
-                            opinion.start = int(o_tag["from"])
-                            opinion.end = int(o_tag["to"]) '''
                     except KeyError:
                         pass
 
