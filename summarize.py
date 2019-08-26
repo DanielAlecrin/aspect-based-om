@@ -23,6 +23,7 @@ def main():
 
     sentence_in_reviews = database.fetach_pos_tagged_sentence()
     sentence_containing_feature_word = []
+    ## Encontra as sentenças que contem as features/aspects
     for review_id, sentences in sentence_in_reviews:
         sentence = eval(sentences)
         prev_word = ''

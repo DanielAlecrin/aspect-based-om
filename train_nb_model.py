@@ -47,6 +47,6 @@ def train_model(sentences, polarities):
     pickle.dump(tfidf_vect, open('models/nb_vectorizer.sav', 'wb'))
 
     # data for ROC curve
-    y_pred_roc = cross_val_predict(naive_bayes_model, vect_data, polarities, cv=10,method='predict_proba')
+    y_pred_roc = cross_val_predict(naive_bayes_model, vect_data, polarities, cv=10, method='predict_proba')
     predicted_values_pos_class = y_pred_roc[:, 1]
     return predicted_values_pos_class
