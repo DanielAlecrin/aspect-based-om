@@ -1,50 +1,12 @@
-import aspects_extraction,\
-    pos_tagging, aspect_pruning, asr_apriori
-import pre_processing
+import aspects_extraction, pos_tagging, aspect_pruning, asr_apriori, pre_processing
 import pandas as pd
-import numpy as np
 import database
-
-import sklearn
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.svm import LinearSVC
-from sklearn.metrics import precision_recall_fscore_support
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report, confusion_matrix
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.metrics import accuracy_score, confusion_matrix
-from sklearn.svm import SVC
-from sklearn.pipeline import Pipeline
-from sklearn.svm import LinearSVC
-from sklearn.model_selection import GridSearchCV, StratifiedKFold, KFold, cross_val_score, train_test_split, cross_val_predict
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import roc_curve, auc  
-from sklearn.metrics import roc_auc_score
-from sklearn.preprocessing import label_binarize, LabelBinarizer  
-
-from nltk.stem import PorterStemmer
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords, wordnet
-
 from datetime import datetime
-import functools
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-import string
-import re
-import pickle
-import time
-
-np.random.seed(500)
 
 def main():
     with open('data/data_train.csv', 'r', encoding='utf8') as csvfile:
-        review_list_origin = pd.read_csv(csvfile)
+        review_list = pd.read_csv(csvfile)
     
-    teste = review_list_origin.loc[review_list_origin['polarity'] == 1]
-    teste2 = review_list_origin.loc[review_list_origin['polarity'] == -1]
-    review_list = pd.concat([teste, teste2], ignore_index=True)
     start_time = datetime.now()
 
     """Extrai cada sentença do comentário, pré processa e armazena no banco"""

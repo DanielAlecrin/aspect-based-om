@@ -2,9 +2,8 @@ import re
 import string
 import pandas as pd
 
-from nltk import word_tokenize, sent_tokenize
-from nltk.corpus import stopwords, wordnet
 from nltk.stem import WordNetLemmatizer
+from nltk.corpus import stopwords
 
 def review_cleanup_symbols(review_sentences):
     """

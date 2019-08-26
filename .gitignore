@@ -1,6 +1,5 @@
 dataset
 stanford-corenlp-full-2018-10-05
-test
 .idea
 *.pyc
 __pycache__

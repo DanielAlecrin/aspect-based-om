@@ -37,6 +37,8 @@ def read_semeval2016_task5_subtask1(filepath):
                         pol = 1
                     elif opinionPolarity == 'negative':
                         pol = -1
+                    elif opinionPolarity == 'neutral':
+                        continue
                     elif opinionPolarity == None:
                         continue
 

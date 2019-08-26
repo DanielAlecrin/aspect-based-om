@@ -1,5 +1,4 @@
 import nltk, pre_processing
-import pandas as pd
 import database
 
 

@@ -1,6 +1,4 @@
-import re
 import database
-from nltk.corpus import wordnet
 
 # Remoção de aspectos: Permanecem os aspectos em que as palavras possuem distância 
 #                      menor ou igual a 2 e estão presentes em mais de 5 sentenças
